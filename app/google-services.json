@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "49624897075",
+    "project_id": "tukitalki",
+    "storage_bucket": "tukitalki.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:49624897075:android:a67d8c3836074515ce3546",
+        "android_client_info": {
+          "package_name": "com.mehedi.tukitalki"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "49624897075-siaj74o2cf40f1q54sgjkibramstg79i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1iMXzlxYWGjt6L6hTvCWtIw8-bxK0ru8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "49624897075-siaj74o2cf40f1q54sgjkibramstg79i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
