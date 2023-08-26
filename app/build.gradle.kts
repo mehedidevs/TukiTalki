@@ -4,6 +4,7 @@ plugins {
     id("com.google.gms.google-services")
     kotlin("kapt")
     id("com.google.dagger.hilt.android")
+
 }
 
 android {
@@ -41,6 +42,9 @@ android {
         viewBinding = true
     }
 }
+
+
+
 
 dependencies {
 

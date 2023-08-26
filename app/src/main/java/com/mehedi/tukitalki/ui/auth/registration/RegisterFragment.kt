@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.mehedi.tukitalki.base.BaseFragment
-import com.mehedi.tukitalki.data.RequestUserRegister
+import com.mehedi.tukitalki.data.register.RequestUserRegister
 import com.mehedi.tukitalki.databinding.FragmentRegisterBinding
-import com.mehedi.tukitalki.utils.registrationErrorMessage
-import com.mehedi.tukitalki.utils.registrationSuccessMessage
+import com.mehedi.tukitalki.utils.DummyImgLink
+import com.mehedi.tukitalki.utils.ErrorMessage
+import com.mehedi.tukitalki.utils.SuccessMessage
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -20,14 +22,14 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
 
         viewModel.responseRegistration.observe(viewLifecycleOwner) {
             when (it) {
-                registrationSuccessMessage -> {
-                    Toast.makeText(requireContext(), registrationSuccessMessage, Toast.LENGTH_LONG)
+                SuccessMessage -> {
+                    Toast.makeText(requireContext(), SuccessMessage, Toast.LENGTH_LONG)
                         .show()
 
                 }
 
-                registrationErrorMessage -> {
-                    Toast.makeText(requireContext(), registrationErrorMessage, Toast.LENGTH_LONG)
+                ErrorMessage -> {
+                    Toast.makeText(requireContext(), ErrorMessage, Toast.LENGTH_LONG)
                         .show()
                 }
 
@@ -49,10 +51,24 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
                 val email = emailEditText.text.toString()
                 val password = passwordEditText.text.toString()
                 val confirmPassword = confirmPasswordEditText.text.toString()
-                val request = RequestUserRegister(name = name, email = email, password = password)
+                val request = RequestUserRegister(
+                    name = name,
+                    email = email,
+                    password = password,
+                    createdAt = System.currentTimeMillis(),
+                    image = DummyImgLink
+                )
                 viewModel.registration(request)
 
             }
+
+
+        }
+
+
+        binding.loginTextView.setOnClickListener {
+
+            findNavController().popBackStack()
 
 
         }
