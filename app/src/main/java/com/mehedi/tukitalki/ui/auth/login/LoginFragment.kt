@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.auth.FirebaseAuth
 import com.mehedi.tukitalki.R
 import com.mehedi.tukitalki.base.BaseFragment
 import com.mehedi.tukitalki.data.login.RequestUserLogin
@@ -19,10 +20,24 @@ import dagger.hilt.android.AndroidEntryPoint
 class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::inflate) {
 
     private val viewModel: LoginViewModel by viewModels()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val user = FirebaseAuth.getInstance().currentUser
+        user?.let {
+            findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+        }
+
+
+    }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+
+
 
         viewModel.responseLogin.observe(viewLifecycleOwner) {
             when (it) {
