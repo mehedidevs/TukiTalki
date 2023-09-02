@@ -58,4 +58,47 @@ class ProfileViewModel @Inject constructor(
 
     }
 
+
+    private var _responseAllUser = MutableLiveData<List<UserProfile>>()
+    val responseAllUserProfile: LiveData<List<UserProfile>> = _responseAllUser
+
+
+    fun getAllUser() {
+
+        val userList = mutableListOf<UserProfile>()
+
+
+        viewModelScope.launch {
+
+            userRepo.getAllUser().addValueEventListener(object : ValueEventListener {
+
+                override fun onDataChange(snapshot: DataSnapshot) {
+
+                    userList.clear()
+
+                    snapshot.children.forEach { dataSnapshot ->
+                        val value = dataSnapshot.getValue(UserProfile::class.java)
+                        value?.let {
+                            userList.add(it)
+                        }
+                    }
+
+                    _responseAllUser.postValue(userList)
+
+
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Log.w("TAG", "Failed to read value.", error.toException())
+                }
+
+            })
+
+
+        }
+
+
+    }
+
+
 }

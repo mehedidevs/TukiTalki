@@ -45,6 +45,8 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
                     Toast.makeText(requireContext(), SuccessMessage, Toast.LENGTH_LONG)
                         .show()
 
+                    findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+
                 }
 
                 ErrorMessage -> {

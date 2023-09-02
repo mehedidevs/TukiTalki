@@ -11,6 +11,7 @@ import com.mehedi.tukitalki.data.login.RequestUserLogin
 interface UserService {
     suspend fun createUser(request: RequestUserRegister): Task<Void>
     suspend fun getUserById(userId: String): DatabaseReference
+    suspend fun getUserAllUser(): DatabaseReference
 
 
 }

@@ -16,4 +16,12 @@ class UserServiceImpl @Inject constructor(private val dbRef: FirebaseDatabase) :
 
         return dbRef.reference.child("user").child(userId)
     }
+
+    override suspend fun getUserAllUser(): DatabaseReference {
+
+
+        return dbRef.reference.child("user")
+
+
+    }
 }

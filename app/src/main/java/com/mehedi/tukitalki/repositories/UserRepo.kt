@@ -24,5 +24,10 @@ class UserRepo @Inject constructor(private var service: UserServiceImpl) {
 
     }
 
+    suspend fun getAllUser(): DatabaseReference {
+        return service.getUserAllUser()
+
+    }
+
 
 }
