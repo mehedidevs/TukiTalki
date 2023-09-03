@@ -2,7 +2,7 @@ package com.mehedi.tukitalki.data.user
 
 
 
-data class UserProfile(var uId: String?=null,
+data class UserProfile(var userId: String?=null,
                        var createdAt: Long?=null,
                        var updatedAt: Long?=null,
                        var image: String="",
