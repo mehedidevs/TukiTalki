@@ -63,6 +63,8 @@ class ChatActivity : AppCompatActivity() {
 
             viewModel.sendMessage(chat)
 
+            binding.textInputEdt.text?.clear()
+
 
         }
 
