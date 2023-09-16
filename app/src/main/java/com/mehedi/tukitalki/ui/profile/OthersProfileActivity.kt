@@ -46,11 +46,6 @@ class OthersProfileActivity : AppCompatActivity() {
             }
         }
 
-
-
-
-
-
         viewModel.responseUserProfile.observe(this) {
 
             binding.apply {
