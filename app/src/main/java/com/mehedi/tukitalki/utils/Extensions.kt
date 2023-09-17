@@ -1,9 +1,12 @@
 package com.mehedi.tukitalki.utils
 
+import kotlin.reflect.full.memberProperties
 
-import com.google.firebase.database.FirebaseDatabase
 
-fun FirebaseDatabase.instance(): FirebaseDatabase {
-    return FirebaseDatabase.getInstance()
-
+inline fun <reified T : Any> T.asMap(): Map<String, Any?> {
+    val props = T::class.memberProperties.associateBy {
+        it.name
+    }
+    return props.keys.associateWith { props[it]?.get(this) }
 }
+
